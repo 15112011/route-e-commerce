@@ -4,6 +4,7 @@ import logo from "../../assets/images/freshcart-logo.svg";
 import { tokenContext } from "../../Context/tokenContext";
 import { cartContext } from "../../Context/cartContext";
 import { useWishlist } from "../../Context/wishListContext";
+import ThemeSwitcher from "../Shared/ThemeSwitcher/ThemeSwitcher";
 
 export default function Navbar() {
   const { token, setToken } = useContext(tokenContext);
@@ -50,7 +51,10 @@ export default function Navbar() {
                   <li key={name}>
                     <NavLink
                       to={path}
-                      className="block px-4 py-2 transition duration-300 hover:text-blue-600 hover:underline"
+                      className="block px-4 py-2 transition duration-300 hover:underline"
+                      style={{ ':hover': { color: 'var(--main-color)' } }}
+                      onMouseEnter={(e) => e.target.style.color = 'var(--main-color)'}
+                      onMouseLeave={(e) => e.target.style.color = ''}
                     >
                       {name}
                     </NavLink>
@@ -61,22 +65,89 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Cart & Auth Buttons */}
-        <div className="flex items-center gap-6">
+        {/* Desktop Navigation */}
+        <div className="flex items-center gap-6 hidden md:flex">
           {token && (
             <>
               <NavLink to="wishlist" className="relative">
-                <i className="text-2xl text-gray-700 transition duration-300 fa-solid fa-heart hover:text-blue-600" />
+                <i className="text-2xl text-gray-700 transition duration-300 fa-solid fa-heart" 
+                 onMouseEnter={(e) => e.target.style.color = 'var(--main-color)'}
+                 onMouseLeave={(e) => e.target.style.color = ''} />
                 {getWishlistCount() > 0 && (
                   <span className="absolute flex items-center justify-center w-5 h-5 text-xs font-bold text-white bg-red-500 rounded-full -top-2 -right-2 animate-pulse">
                     {getWishlistCount()}
                   </span>
                 )}
               </NavLink>
+            </>
+          )}
+
+          {/* Theme Switcher */}
+          <ThemeSwitcher />
+
+          <ul className="flex gap-4">
+            {token ? (
+              <li>
+                <button
+                  onClick={() => {
+                    localStorage.removeItem("userToken");
+                    setToken(null);
+                    navigate("/login");
+                  }}
+                  className="px-2 py-2 text-white transition duration-300 bg-red-500 rounded-lg hover:bg-red-600"
+                >
+                  Logout
+                </button>
+              </li>
+            ) : (
+              <>
+                <li>
+                  <NavLink
+                    to="register"
+                    className="px-4 py-2 transition duration-300 border rounded-lg btn-modern"
+                    style={{ 
+                      color: 'var(--main-color)', 
+                      borderColor: 'var(--main-color)'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.target.style.backgroundColor = 'var(--main-color)';
+                      e.target.style.color = 'white';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.target.style.backgroundColor = 'transparent';
+                      e.target.style.color = 'var(--main-color)';
+                    }}
+                  >
+                    Register
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="login"
+                    className="px-4 py-2 text-white transition duration-300 rounded-lg btn-modern"
+                    style={{ backgroundColor: 'var(--main-color)' }}
+                    onMouseEnter={(e) => e.target.style.backgroundColor = 'var(--main-color-dark)'}
+                    onMouseLeave={(e) => e.target.style.backgroundColor = 'var(--main-color)'}
+                  >
+                    Login
+                  </NavLink>
+                </li>
+              </>
+            )}
+          </ul>
+        </div>
+
+        {/* Cart & Auth Buttons */}
+        <div className="flex items-center gap-6 md:hidden">
+          {token && (
+            <>
               <NavLink to="cart" className="relative">
-                <i className="text-2xl text-gray-700 transition duration-300 fa-solid fa-cart-shopping hover:text-blue-600" />
+                <i className="text-2xl text-gray-700 transition duration-300 fa-solid fa-cart-shopping" 
+                 onMouseEnter={(e) => e.target.style.color = 'var(--main-color)'}
+                 onMouseLeave={(e) => e.target.style.color = ''} />
                 {numOfCartItems > 0 && (
-                  <span className="absolute flex items-center justify-center w-5 h-5 text-xs font-bold text-white bg-blue-600 rounded-full -top-2 -right-2 animate-pulse">
+                  <span className="absolute flex items-center justify-center w-5 h-5 text-xs font-bold text-white rounded-full -top-2 -right-2 animate-pulse"
+                        style={{ backgroundColor: 'var(--main-color)' }}>
                     {numOfCartItems}
                   </span>
                 )}
@@ -103,7 +174,19 @@ export default function Navbar() {
                 <li>
                   <NavLink
                     to="register"
-                    className="px-4 py-2 text-blue-600 transition duration-300 border border-blue-500 rounded-lg hover:bg-blue-500 hover:text-white btn-modern"
+                    className="px-4 py-2 transition duration-300 border rounded-lg btn-modern"
+                    style={{ 
+                      color: 'var(--main-color)', 
+                      borderColor: 'var(--main-color)'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.target.style.backgroundColor = 'var(--main-color)';
+                      e.target.style.color = 'white';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.target.style.backgroundColor = 'transparent';
+                      e.target.style.color = 'var(--main-color)';
+                    }}
                   >
                     Register
                   </NavLink>
@@ -111,7 +194,10 @@ export default function Navbar() {
                 <li>
                   <NavLink
                     to="login"
-                    className="px-4 py-2 text-white transition duration-300 bg-blue-600 rounded-lg hover:bg-blue-700 btn-modern"
+                    className="px-4 py-2 text-white transition duration-300 rounded-lg btn-modern"
+                    style={{ backgroundColor: 'var(--main-color)' }}
+                    onMouseEnter={(e) => e.target.style.backgroundColor = 'var(--main-color-dark)'}
+                    onMouseLeave={(e) => e.target.style.backgroundColor = 'var(--main-color)'}
                   >
                     Login
                   </NavLink>

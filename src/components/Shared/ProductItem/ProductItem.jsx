@@ -47,15 +47,24 @@ export default function ProductItem(props) {
         <div className="absolute right-3 top-3">
           <button
             type="button"
-            className={`border shadow-md hover:text-blue-600 focus:ring-4 focus:outline-none font-medium rounded-md text-sm p-2.5 text-center flex items-center justify-center transition-all duration-300 ${
-              isWishlistActive ? "text-blue-600 border-blue-600 bg-blue-50" : "border-gray-300"
-            }`}
+            className="border shadow-md focus:ring-4 focus:outline-none font-medium rounded-md text-sm p-2.5 text-center flex items-center justify-center transition-all duration-300 border-gray-300"
+            style={{
+              color: isWishlistActive ? 'var(--main-color)' : '',
+              borderColor: isWishlistActive ? 'var(--main-color)' : '',
+              backgroundColor: isWishlistActive ? 'var(--main-color-light)' : ''
+            }}
+            onMouseEnter={(e) => {
+              if (!isWishlistActive) e.target.style.color = 'var(--main-color)';
+            }}
+            onMouseLeave={(e) => {
+              if (!isWishlistActive) e.target.style.color = '';
+            }}
             onClick={handleWishlistClick}
             disabled={wishlistActionLoading}
             aria-label="Toggle wishlist"
           >
             {wishlistActionLoading ? (
-              <ClipLoader size={15} color="#3b82f6" />
+              <ClipLoader size={15} color="var(--main-color)" />
             ) : (
               <i className="text-lg fa fa-heart"></i>
             )}
@@ -84,23 +93,43 @@ export default function ProductItem(props) {
         <div className="flex gap-2 mt-3">
           <button
             onClick={handleWishlistClick}
-            className={`flex-shrink-0 p-3 font-semibold rounded-lg transition-all duration-300 btn-modern ${
-              isWishlistActive 
-                ? "bg-red-500 text-white hover:bg-red-600" 
-                : "border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white"
-            }`}
+            className="flex-shrink-0 p-3 font-semibold rounded-lg transition-all duration-300 btn-modern"
+            style={{
+              backgroundColor: isWishlistActive ? '#ef4444' : 'transparent',
+              color: isWishlistActive ? 'white' : 'var(--main-color)',
+              border: isWishlistActive ? 'none' : '2px solid var(--main-color)'
+            }}
+            onMouseEnter={(e) => {
+              if (isWishlistActive) {
+                e.target.style.backgroundColor = '#dc2626';
+              } else {
+                e.target.style.backgroundColor = 'var(--main-color)';
+                e.target.style.color = 'white';
+              }
+            }}
+            onMouseLeave={(e) => {
+              if (isWishlistActive) {
+                e.target.style.backgroundColor = '#ef4444';
+              } else {
+                e.target.style.backgroundColor = 'transparent';
+                e.target.style.color = 'var(--main-color)';
+              }
+            }}
             disabled={wishlistActionLoading}
             title={isWishlistActive ? "Remove from wishlist" : "Add to wishlist"}
           >
             {wishlistActionLoading ? (
-              <ClipLoader size={15} color={isWishlistActive ? "#fff" : "#3b82f6"} />
+              <ClipLoader size={15} color={isWishlistActive ? "#fff" : "var(--main-color)"} />
             ) : (
               <i className={`fa fa-heart ${isWishlistActive ? "fas" : "far"}`}></i>
             )}
           </button>
           <button
             onClick={handleAddToCart}
-            className="flex-grow p-3 text-white font-semibold rounded-lg bg-gradient-to-r from-blue-600 to-blue-700 transition-all duration-300 hover:from-blue-700 hover:to-blue-800 btn-modern shadow-blue"
+            className="flex-grow p-3 text-white font-semibold rounded-lg transition-all duration-300 btn-modern"
+            style={{ background: 'var(--gradient-primary)' }}
+            onMouseEnter={(e) => e.target.style.background = 'var(--main-color-dark)'}
+            onMouseLeave={(e) => e.target.style.background = 'var(--gradient-primary)'}
             disabled={cartLoading}
           >
             {cartLoading ? <ClipLoader size={15} color="#fff" /> : "Add to cart"}
