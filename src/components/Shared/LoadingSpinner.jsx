@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const LoadingSpinner = ({ size = 'medium', color = 'blue' }) => {
+const LoadingSpinner = ({ size = 'medium', color = 'red' }) => {
   const sizeClasses = {
     small: 'w-4 h-4',
     medium: 'w-8 h-8',
@@ -9,6 +9,7 @@ const LoadingSpinner = ({ size = 'medium', color = 'blue' }) => {
   };
 
   const colorClasses = {
+    red: 'border-red-600',
     blue: 'border-blue-600',
     white: 'border-white',
     gray: 'border-gray-600'

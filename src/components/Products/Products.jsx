@@ -60,7 +60,7 @@ export default function Products() {
             placeholder="Search products..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="bg-white border border-blue-200 text-gray-900 text-sm rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 block w-full p-4 shadow-modern transition-all duration-300 hover:shadow-blue"
+            className="bg-white border border-red-200 text-gray-900 text-sm rounded-xl focus:ring-2 focus:ring-red-500 focus:border-red-500 block w-full p-4 shadow-modern transition-all duration-300 hover:shadow-red"
           />
         </AnimatedWrapper> 
       </div>

@@ -21,6 +21,7 @@ import AllOrders from "./components/AllOrders/AllOrders";
 import ForgotPassword from "./components/ForgotPassword/ForgotPassword";
 import NumberInput from "./components/NumberInput/NumberInput";
 import PasswordReset from "./components/PasswordReset/PasswordReset";
+import LandingPage from "./components/LandingPage/LandingPage";
 function App() {
 
 
@@ -35,26 +36,27 @@ function App() {
 
 
   const routes = createBrowserRouter([
-    {path:"",element: <Layout />,children: [
+    { path: "/", element: <LandingPage /> },
+    { path: "/landing", element: <LandingPage /> },
+    {path:"/app",element: <Layout />,children: [
         { index: true,element: <ProtectedRoutes><Home /></ProtectedRoutes> },
         { path:"home",element: <ProtectedRoutes><Home /></ProtectedRoutes> },
         { path: "categories", element: <ProtectedRoutes><Categories /></ProtectedRoutes> },
         { path: "brands", element: <ProtectedRoutes><Brands /></ProtectedRoutes> },
-        { path: "login", element:<AuthView> <Login /></AuthView> },
-        { path: "register", element: <AuthView><Register /></AuthView> },
-        { path: "forgotPassword", element: <AuthView><ForgotPassword /></AuthView> },
-        { path: "numberInput", element: <AuthView><NumberInput /></AuthView> },
-        { path: "passwordReset", element: <AuthView><PasswordReset /></AuthView> },
         { path: "products", element:<ProtectedRoutes> <Products /></ProtectedRoutes> },
         { path: "cart", element: <ProtectedRoutes><Cart /></ProtectedRoutes> },
         { path: "productDetails/:id/:categoryId", element: <ProtectedRoutes><ProductDetails /></ProtectedRoutes> },
         { path: "wishlist", element: <ProtectedRoutes><Wishlist /></ProtectedRoutes> },
         { path: "checkout", element: <ProtectedRoutes><Checkout /></ProtectedRoutes> },
         { path: "allorders", element: <ProtectedRoutes><AllOrders /></ProtectedRoutes> },
-       
-        { path: "*", element: <NotFound /> },
       ],
     },
+    { path: "login", element:<AuthView> <Login /></AuthView> },
+    { path: "register", element: <AuthView><Register /></AuthView> },
+    { path: "forgotPassword", element: <AuthView><ForgotPassword /></AuthView> },
+    { path: "numberInput", element: <AuthView><NumberInput /></AuthView> },
+    { path: "passwordReset", element: <AuthView><PasswordReset /></AuthView> },
+    { path: "*", element: <NotFound /> },
   ]);
 
   return (
