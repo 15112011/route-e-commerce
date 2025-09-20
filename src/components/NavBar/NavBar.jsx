@@ -53,7 +53,7 @@ export default function Navbar() {
       }`}>
         <div className="flex items-center justify-between max-w-7xl mx-auto px-4">
           {/* Logo */}
-          <NavLink to="" className="flex items-center">
+          <NavLink to="/app" className="flex items-center">
             <img 
               src={logo} 
               width="160px" 
@@ -67,10 +67,10 @@ export default function Navbar() {
             {token && (
               <>
                 {[
-                  { name: "Home", path: "home", icon: "fas fa-home" },
-                  { name: "Products", path: "products", icon: "fas fa-box" },
-                  { name: "Categories", path: "categories", icon: "fas fa-th-large" },
-                  { name: "Brands", path: "brands", icon: "fas fa-tags" },
+                  { name: "Home", path: "/app/home", icon: "fas fa-home" },
+                  { name: "Products", path: "/app/products", icon: "fas fa-box" },
+                  { name: "Categories", path: "/app/categories", icon: "fas fa-th-large" },
+                  { name: "Brands", path: "/app/brands", icon: "fas fa-tags" },
                 ].map(({ name, path, icon }) => (
                   <NavLink
                     key={name}
@@ -99,7 +99,7 @@ export default function Navbar() {
             {token ? (
               <>
                 {/* Cart Icon */}
-                <NavLink to="cart" className="relative group">
+                <NavLink to="/app/cart" className="relative group">
                   <div className="relative p-3 rounded-xl bg-gradient-to-r from-blue-50 to-gray-50 hover:from-blue-100 hover:to-gray-100 transition-all duration-300 hover:scale-110">
                     <i className="fas fa-shopping-cart text-xl text-blue-600"></i>
                     {numOfCartItems > 0 && (
@@ -111,7 +111,7 @@ export default function Navbar() {
                 </NavLink>
 
                 {/* Wishlist Icon */}
-                <NavLink to="wishlist" className="relative group">
+                <NavLink to="/app/wishlist" className="relative group">
                   <div className="relative p-3 rounded-xl bg-gradient-to-r from-red-50 to-pink-50 hover:from-red-100 hover:to-pink-100 transition-all duration-300 hover:scale-110">
                     <i className="fas fa-heart text-xl text-red-500"></i>
                     {getWishlistCount() > 0 && (
@@ -158,7 +158,7 @@ export default function Navbar() {
             {token && (
               <>
                 {/* Mobile Cart Icon */}
-                <NavLink to="cart" className="relative">
+                <NavLink to="/app/cart" className="relative">
                   <div className="relative p-2.5 rounded-lg bg-blue-50 hover:bg-blue-100 transition-all duration-300">
                     <i className="fas fa-shopping-cart text-lg text-blue-600"></i>
                     {numOfCartItems > 0 && (
@@ -170,7 +170,7 @@ export default function Navbar() {
                 </NavLink>
 
                 {/* Mobile Wishlist Icon */}
-                <NavLink to="wishlist" className="relative">
+                <NavLink to="/app/wishlist" className="relative">
                   <div className="relative p-2.5 rounded-lg bg-red-50 hover:bg-red-100 transition-all duration-300">
                     <i className="fas fa-heart text-lg text-red-500"></i>
                     {getWishlistCount() > 0 && (
@@ -235,12 +235,12 @@ export default function Navbar() {
             {token ? (
               <div className="p-6 space-y-4">
                 {[
-                  { name: "Home", path: "home", icon: "fas fa-home", color: "blue" },
-                  { name: "Products", path: "products", icon: "fas fa-box", color: "green" },
-                  { name: "Categories", path: "categories", icon: "fas fa-th-large", color: "purple" },
-                  { name: "Brands", path: "brands", icon: "fas fa-tags", color: "orange" },
-                  { name: "Cart", path: "cart", icon: "fas fa-shopping-cart", color: "blue", badge: numOfCartItems },
-                  { name: "Wishlist", path: "wishlist", icon: "fas fa-heart", color: "red", badge: getWishlistCount() },
+                  { name: "Home", path: "/app/home", icon: "fas fa-home", color: "blue" },
+                  { name: "Products", path: "/app/products", icon: "fas fa-box", color: "green" },
+                  { name: "Categories", path: "/app/categories", icon: "fas fa-th-large", color: "purple" },
+                  { name: "Brands", path: "/app/brands", icon: "fas fa-tags", color: "orange" },
+                  { name: "Cart", path: "/app/cart", icon: "fas fa-shopping-cart", color: "blue", badge: numOfCartItems },
+                  { name: "Wishlist", path: "/app/wishlist", icon: "fas fa-heart", color: "red", badge: getWishlistCount() },
                 ].map(({ name, path, icon, color, badge }) => (
                   <NavLink
                     key={name}

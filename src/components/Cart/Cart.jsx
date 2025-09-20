@@ -258,7 +258,7 @@ export default function Cart() {
       </p>
       
       <Link 
-        to="/products" 
+        to="/app/products" 
         className="group relative px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-2xl hover:from-blue-700 hover:to-blue-800 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 overflow-hidden"
       >
         <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
@@ -367,14 +367,14 @@ export default function Cart() {
                   
                   <div className="flex flex-col sm:flex-row gap-4">
                     <Link
-                      to="/products"
+                      to="/app/products"
                       className="px-8 py-4 text-blue-600 border-2 border-blue-600 bg-blue-50 rounded-2xl hover:bg-blue-600 hover:text-white transition-all duration-300 font-semibold text-center shadow-lg hover:shadow-xl"
                     >
                       <i className="fas fa-arrow-left mr-2"></i>
                       Continue Shopping
                     </Link>
                     <Link
-                      to={'/checkout'}
+                      to={'/app/checkout'}
                       className="group relative px-10 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-2xl hover:from-blue-700 hover:to-blue-800 transition-all duration-300 font-bold shadow-lg hover:shadow-xl hover:scale-105 text-center overflow-hidden"
                     >
                       <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>

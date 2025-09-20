@@ -129,7 +129,7 @@ export default function ProductItem(props) {
 
         {/* Product Image Section */}
         <div className="relative p-6 pb-4">
-          <Link to={`/productDetails/${id}/${category._id}`} className="block">
+          <Link to={`/app/productDetails/${id}/${category._id}`} className="block">
             <div className="relative w-full h-48 sm:h-56 lg:h-64 overflow-hidden rounded-2xl bg-gray-100">
               {/* Image Loading State */}
               {!imageLoaded && !imageError && (
@@ -183,7 +183,7 @@ export default function ProductItem(props) {
 
         {/* Product Content */}
         <div className="px-6 pb-6">
-          <Link to={`/productDetails/${id}/${category._id}`} className="block">
+          <Link to={`/app/productDetails/${id}/${category._id}`} className="block">
             {/* Category Badge */}
             <div className="mb-3">
               <span className="inline-block px-3 py-1 text-xs font-medium text-blue-600 bg-blue-50 rounded-full border border-blue-100">
